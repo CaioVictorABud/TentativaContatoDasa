@@ -1,8 +1,5 @@
-
 document.addEventListener("DOMContentLoaded", function () {
     const chamadoForm = document.getElementById("chamadoForm");
-    const mensagensContainer = document.getElementById("mensagensContainer");
-    const chamadosList = document.getElementById("chamadosList");
 
     chamadoForm.addEventListener("submit", function (event) {
         event.preventDefault();
@@ -41,14 +38,15 @@ function adicionarChamado() {
     chamadoItem.classList.add("chamadoItem");
     chamadoItem.innerHTML = `<div class="chamadoCabecalho">${nome} - Chamado ${numeroChamado}</div>
                              <div>Requisição: ${requisicao}</div>
-                             <div>Status: ${chamado.status}</div>
+                             <div>Status: <span id="status${numeroChamado}">${chamado.status}</span></div>
                              <label for="statusSelect${numeroChamado}">Atualizar Status:</label>
                              <select id="statusSelect${numeroChamado}" onchange="atualizarStatus('${numeroChamado}', this.value)">
+                                 <option value="Pendente">Pendente</option>
                                  <option value="Em Andamento">Em Andamento</option>
                                  <option value="Cancelado">Cancelado</option>
                                  <option value="Encerrado">Encerrado</option>
                              </select>`;
-    
+
     chamadosList.appendChild(chamadoItem);
 
     // Limpa o formulário
@@ -59,14 +57,8 @@ function adicionarChamado() {
 
 function atualizarStatus(numeroChamado, novoStatus) {
     // Atualiza o status do chamado na lista
-    const chamadosList = document.getElementById("chamadosList");
-    const chamadoItems = chamadosList.getElementsByClassName("chamadoItem");
-
-    for (let i = 0; i < chamadoItems.length; i++) {
-        const chamadoItem = chamadoItems[i];
-        if (chamadoItem.innerText.includes(`Chamado ${numeroChamado}`)) {
-            chamadoItem.innerHTML = chamadoItem.innerHTML.replace(/Status: .+/, `Status: ${novoStatus}`);
-            break;
-        }
+    const statusSpan = document.getElementById(`status${numeroChamado}`);
+    if (statusSpan) {
+        statusSpan.innerText = novoStatus;
     }
 }
