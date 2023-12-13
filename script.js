@@ -33,4 +33,35 @@ function adicionarChamado() {
     const numeroChamado = document.getElementById("numeroChamado").value;
     const requisicao = document.getElementById("requisicao").value;
 
-    const chamado = { nome, numeroChamado, requisicao, status:
+    const chamado = { nome, numeroChamado, requisicao, status: "Pendente" };
+
+    // Adiciona o chamado à lista de chamados
+    const chamadosList = document.getElementById("chamadosList");
+    const chamadoItem = document.createElement("li");
+    chamadoItem.classList.add("chamadoItem");
+    chamadoItem.innerHTML = `${nome} - Chamado ${numeroChamado} - ${requisicao} - Status: ${chamado.status}
+                             <button onclick="atualizarStatus('${numeroChamado}', 'Em Andamento')">Em Andamento</button>
+                             <button onclick="atualizarStatus('${numeroChamado}', 'Cancelado')">Cancelado</button>
+                             <button onclick="atualizarStatus('${numeroChamado}', 'Encerrado')">Encerrado</button>`;
+    
+    chamadosList.appendChild(chamadoItem);
+
+    // Limpa o formulário
+    document.getElementById("nome").value = "";
+    document.getElementById("numeroChamado").value = "";
+    document.getElementById("requisicao").value = "";
+}
+
+function atualizarStatus(numeroChamado, novoStatus) {
+    // Atualiza o status do chamado na lista
+    const chamadosList = document.getElementById("chamadosList");
+    const chamadoItems = chamadosList.getElementsByClassName("chamadoItem");
+
+    for (let i = 0; i < chamadoItems.length; i++) {
+        const chamadoItem = chamadoItems[i];
+        if (chamadoItem.innerText.includes(`Chamado ${numeroChamado}`)) {
+            chamadoItem.innerText = chamadoItem.innerText.replace(/Status: .+/, `Status: ${novoStatus}`);
+            break;
+        }
+    }
+}
