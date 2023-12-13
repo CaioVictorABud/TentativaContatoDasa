@@ -41,6 +41,10 @@ h1, h2 {
 
 #chamadosContainer {
     margin-top: 30px;
+    .chamadoCabecalho {
+        color: black;
+        font-weight: bold;
+    }
 }
 
 #chamadosList {
@@ -50,6 +54,7 @@ h1, h2 {
 
 .chamadoItem {
     margin-bottom: 10px;
+    border: 1px solid black;
 }
 
 .chamadoItem button {
