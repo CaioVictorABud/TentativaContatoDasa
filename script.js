@@ -22,7 +22,7 @@ function gerarMensagem() {
     mensagensContainer.innerHTML = "";
     mensagensContainer.appendChild(mensagemElement);
 
-   
+    // Adicione lógica aqui para copiar a mensagem para a área de transferência se necessário
 }
 
 function adicionarChamado() {
@@ -49,14 +49,14 @@ function adicionarChamado() {
 
     chamadosList.appendChild(chamadoItem);
 
-  
+    
     document.getElementById("nome").value = "";
     document.getElementById("numeroChamado").value = "";
     document.getElementById("requisicao").value = "";
 }
 
 function atualizarStatus(numeroChamado, novoStatus) {
-    // Atualiza o status do chamado na lista
+    
     const statusSpan = document.getElementById(`status${numeroChamado}`);
     if (statusSpan) {
         statusSpan.innerText = novoStatus;
