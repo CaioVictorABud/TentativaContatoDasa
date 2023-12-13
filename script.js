@@ -39,10 +39,15 @@ function adicionarChamado() {
     const chamadosList = document.getElementById("chamadosList");
     const chamadoItem = document.createElement("li");
     chamadoItem.classList.add("chamadoItem");
-    chamadoItem.innerHTML = `${nome} - Chamado ${numeroChamado} - ${requisicao} - Status: ${chamado.status}
-                             <button onclick="atualizarStatus('${numeroChamado}', 'Em Andamento')">Em Andamento</button>
-                             <button onclick="atualizarStatus('${numeroChamado}', 'Cancelado')">Cancelado</button>
-                             <button onclick="atualizarStatus('${numeroChamado}', 'Encerrado')">Encerrado</button>`;
+    chamadoItem.innerHTML = `<div class="chamadoCabecalho">${nome} - Chamado ${numeroChamado}</div>
+                             <div>Requisição: ${requisicao}</div>
+                             <div>Status: ${chamado.status}</div>
+                             <label for="statusSelect${numeroChamado}">Atualizar Status:</label>
+                             <select id="statusSelect${numeroChamado}" onchange="atualizarStatus('${numeroChamado}', this.value)">
+                                 <option value="Em Andamento">Em Andamento</option>
+                                 <option value="Cancelado">Cancelado</option>
+                                 <option value="Encerrado">Encerrado</option>
+                             </select>`;
     
     chamadosList.appendChild(chamadoItem);
 
@@ -60,7 +65,7 @@ function atualizarStatus(numeroChamado, novoStatus) {
     for (let i = 0; i < chamadoItems.length; i++) {
         const chamadoItem = chamadoItems[i];
         if (chamadoItem.innerText.includes(`Chamado ${numeroChamado}`)) {
-            chamadoItem.innerText = chamadoItem.innerText.replace(/Status: .+/, `Status: ${novoStatus}`);
+            chamadoItem.innerHTML = chamadoItem.innerHTML.replace(/Status: .+/, `Status: ${novoStatus}`);
             break;
         }
     }
