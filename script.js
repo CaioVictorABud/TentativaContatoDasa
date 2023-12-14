@@ -12,7 +12,7 @@ function gerarMensagem() {
     const numeroChamado = document.getElementById("numeroChamado").value;
     const requisicao = document.getElementById("requisicao").value;
 
-    const mensagem = `Bom dia, aqui é do Suporte Dasa, é sobre o seu chamado ${numeroChamado}.\nRequisição: ${requisicao}\nEstá disponível para o atendimento?`;
+    const mensagem = `Olá, tudo bem? Aqui é do Suporte Dasa, entro em contato sobre o seu chamado ${numeroChamado}.\nDescrição: ${requisicao}\nEstá disponível para o atendimento?`;
 
     const mensagemElement = document.createElement("div");
     mensagemElement.classList.add("mensagem");
@@ -36,15 +36,16 @@ function adicionarChamado() {
     chamadoItem.classList.add("chamadoItem");
 
     chamadoItem.innerHTML = `<div class="chamadoCabecalho">${nome} - Chamado ${numeroChamado}</div>
-                             <div>Requisição: ${requisicao}</div>
+                             <div>Descrição: ${requisicao}</div>
                              <div class="status">Status: <span id="status${numeroChamado}">Sem Status</span></div>
                              <label for="statusSelect${numeroChamado}">Atualizar Status:</label>
                              <select id="statusSelect${numeroChamado}" onchange="atualizarStatus('${numeroChamado}', this.value.toLowerCase())">
                                  <option value="">Sem Status</option>
-                                 <option value="pendente">Pendente</option>
+                                 <option value="Pendente">Pendente</option>
                                  <option value="em_andamento">Em Andamento</option>
-                                 <option value="cancelado">Cancelado</option>
-                                 <option value="encerrado">Encerrado</option>
+                                 <option value="Cancelado">Cancelado</option>
+                                 <option value="Encerrado">Encerrado</option>
+                                 <option value="Direcionado">Direcionado</option>
                              </select>`;
 
     chamadosList.appendChild(chamadoItem);
