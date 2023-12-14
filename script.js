@@ -22,7 +22,7 @@ function gerarMensagem() {
     mensagensContainer.innerHTML = "";
     mensagensContainer.appendChild(mensagemElement);
 
-    // Adicione lógica aqui para copiar a mensagem para a área de transferência se necessário
+    
 }
 
 function adicionarChamado() {
@@ -30,35 +30,45 @@ function adicionarChamado() {
     const numeroChamado = document.getElementById("numeroChamado").value;
     const requisicao = document.getElementById("requisicao").value;
 
-    const chamado = { nome, numeroChamado, requisicao, status: "Pendente" };
-
-   
     const chamadosList = document.getElementById("chamadosList");
     const chamadoItem = document.createElement("li");
+
     chamadoItem.classList.add("chamadoItem");
+
     chamadoItem.innerHTML = `<div class="chamadoCabecalho">${nome} - Chamado ${numeroChamado}</div>
                              <div>Requisição: ${requisicao}</div>
-                             <div>Status: <span id="status${numeroChamado}">${chamado.status}</span></div>
+                             <div class="status">Status: <span id="status${numeroChamado}">Sem Status</span></div>
                              <label for="statusSelect${numeroChamado}">Atualizar Status:</label>
-                             <select id="statusSelect${numeroChamado}" onchange="atualizarStatus('${numeroChamado}', this.value)">
-                                 <option value="Pendente">Pendente</option>
-                                 <option value="Em Andamento">Em Andamento</option>
-                                 <option value="Cancelado">Cancelado</option>
-                                 <option value="Encerrado">Encerrado</option>
+                             <select id="statusSelect${numeroChamado}" onchange="atualizarStatus('${numeroChamado}', this.value.toLowerCase())">
+                                 <option value="">Sem Status</option>
+                                 <option value="pendente">Pendente</option>
+                                 <option value="em_andamento">Em Andamento</option>
+                                 <option value="cancelado">Cancelado</option>
+                                 <option value="encerrado">Encerrado</option>
                              </select>`;
 
     chamadosList.appendChild(chamadoItem);
 
-    
+    // Limpa o formulário
     document.getElementById("nome").value = "";
     document.getElementById("numeroChamado").value = "";
     document.getElementById("requisicao").value = "";
 }
 
+
 function atualizarStatus(numeroChamado, novoStatus) {
-    
     const statusSpan = document.getElementById(`status${numeroChamado}`);
+    
     if (statusSpan) {
+        console.log(`Antes da atualização - Classes: ${statusSpan.className}`);
+        
+        // Substituir todas as classes relacionadas ao status
+        statusSpan.className = `chamadoItem ${novoStatus.toLowerCase()}`;
+
+        // Atualizar o valor do status no texto
         statusSpan.innerText = novoStatus;
+
+        console.log(`Depois da atualização - Classes: ${statusSpan.className}`);
     }
 }
+
