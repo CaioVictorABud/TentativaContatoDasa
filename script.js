@@ -82,3 +82,41 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+document.getElementById('copiarBtn').addEventListener('click', function() {
+  // Obtém o horário e a data atuais
+  var dataAtual = new Date();
+  var horarioAtual = dataAtual.toLocaleTimeString();
+  var dataFormatada = dataAtual.toLocaleDateString();
+
+  // Monta a mensagem com o horário e a data atuais
+  var mensagem = `
+Prezado usuário(a),
+
+Tentativa de Contato sem sucesso, às ${horarioAtual} em ${dataFormatada}. Favor informar outra forma de contato e o melhor horário.
+Favor acessar o link https://dasadesk.dasa.com.br, para consultar o chamado, observe na parte superior do portal possui "Meus incidentes" e "Minhas solicitações" clique na opção em que se encontra seu chamado.
+Após realizar a consulta, verifique se nos comentários do chamado está faltando alguma informação para atuação da equipe ou se já tentaram o contato, caso esteja faltando informações digite uma mensagem e poste que será dado continuidade em seu chamado.
+
+Importante: Lembramos que o chamado permanecerá em status de "Pendente" durante 3 dias úteis e caso não haja retorno das informações solicitadas, dentro deste prazo, o chamado será cancelado.
+
+Obrigado
+Service Desk`;
+
+  // Cria um elemento de texto temporário e o adiciona ao corpo do documento
+  var tempTextArea = document.createElement('textarea');
+  tempTextArea.value = mensagem;
+  document.body.appendChild(tempTextArea);
+
+  // Seleciona o texto no elemento de texto temporário
+  tempTextArea.select();
+  tempTextArea.setSelectionRange(0, 99999); // Para dispositivos móveis
+
+  // Copia o texto para a área de transferência
+  document.execCommand('copy');
+
+  // Remove o elemento de texto temporário
+  document.body.removeChild(tempTextArea);
+
+  // Exibe uma mensagem informando que a cópia foi realizada
+  alert("Mensagem copiada para a área de transferência.");
+});
+
