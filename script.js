@@ -22,6 +22,8 @@ function gerarMensagem() {
     mensagensContainer.innerHTML = "";
     mensagensContainer.appendChild(mensagemElement);
 
+    copiarParaAreaTransferencia(mensagem);
+
     
 }
 
@@ -119,3 +121,23 @@ document.getElementById('copiarBtn').addEventListener('click', function() {
     // Exibe uma mensagem informando que a cópia foi realizada
     alert("Mensagem copiada para a área de transferência.");
   });
+
+function copiarParaAreaTransferencia(texto) {
+    // Cria um elemento de texto temporário e o adiciona ao corpo do documento
+    const tempTextArea = document.createElement('textarea');
+    tempTextArea.value = texto;
+    document.body.appendChild(tempTextArea);
+
+    // Seleciona o texto no elemento de texto temporário
+    tempTextArea.select();
+    tempTextArea.setSelectionRange(0, 99999); // Para dispositivos móveis
+
+    // Copia o texto para a área de transferência
+    document.execCommand('copy');
+
+    // Remove o elemento de texto temporário
+    document.body.removeChild(tempTextArea);
+
+    // Exibe uma mensagem informando que a cópia foi realizada
+    alert("Mensagem copiada para a área de transferência.");
+}
