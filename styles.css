@@ -6,16 +6,39 @@ body {
 }
 
 .container {
+
     max-width: 800px;
     margin: 20px auto;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: block;
+    text-align:center;
 }
 
 form {
     margin-bottom: 20px;
+
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
 }
 
 textarea {
@@ -45,16 +68,40 @@ h1, h2 {
         color: black;
         font-weight: bold;
     }
+    .status {
+        padding: 20px;
+    }
 }
 
 #chamadosList {
-    list-style-type: none;
-    padding: 0;
+    list-style-type: inline;
+
 }
 
 .chamadoItem {
     margin-bottom: 10px;
-    border: 1px solid black;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.chamadoItem.pendente {
+    background-color: #ddcb2c; /* amarelo */
+    
+}
+
+.chamadoItem.em_andamento {
+    background-color: #fd9800; /* laranja */
+}
+
+.chamadoItem.cancelado {
+    background-color: #ffeb3b; /* amarelo */
+}
+
+.chamadoItem.encerrado {
+    background-color: #16eb1d; /* verde */
 }
 
 .chamadoItem button {
