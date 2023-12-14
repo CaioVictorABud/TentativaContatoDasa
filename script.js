@@ -73,3 +73,12 @@ function atualizarStatus(numeroChamado, novoStatus) {
     }
 }
 
+document.addEventListener("DOMContentLoaded", function () {
+    const toggleThemeButton = document.getElementById("toggleTheme");
+    const body = document.body;
+
+    toggleThemeButton.addEventListener("click", function () {
+        body.classList.toggle("temaEscuro");
+    });
+});
+
