@@ -88,7 +88,7 @@ h1, h2 {
 }
 
 .chamadoItem.pendente {
-    background-color: #ddcb2c; /* amarelo */
+    background-color: #ecf029; /* amarelo */
     
 }
 
@@ -97,11 +97,14 @@ h1, h2 {
 }
 
 .chamadoItem.cancelado {
-    background-color: #ffeb3b; /* amarelo */
+    background-color: #ecf029; /* amarelo */
 }
 
 .chamadoItem.encerrado {
     background-color: #16eb1d; /* verde */
+}
+.chamadoItem.direcionado {
+    background-color: #ecf029; /* aamrelo */
 }
 
 .chamadoItem button {
