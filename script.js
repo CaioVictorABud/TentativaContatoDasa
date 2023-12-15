@@ -49,6 +49,7 @@ function adicionarChamado() {
                                  <option value="Encerrado">Encerrado</option>
                                  <option value="Direcionado">Direcionado</option>
                              </select>`;
+                             <button onclick="excluirChamado('${numeroChamado}')">Excluir</button>`;
                             
 
     chamadosList.appendChild(chamadoItem);
