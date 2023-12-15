@@ -53,12 +53,14 @@ function adicionarChamado() {
 
     chamadosList.appendChild(chamadoItem);
 
-    salvarChamadoNoLocalStorage(nome, numeroChamado, requisicao);
+    
 
     // Limpa o formulário
     document.getElementById("nome").value = "";
     document.getElementById("numeroChamado").value = "";
     document.getElementById("requisicao").value = "";
+
+    salvarChamadoNoLocalStorage(nome, numeroChamado, requisicao);
 }
 
 
