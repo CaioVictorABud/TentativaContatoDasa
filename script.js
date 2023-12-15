@@ -52,6 +52,8 @@ function adicionarChamado() {
 
     chamadosList.appendChild(chamadoItem);
 
+    salvarChamadoNoLocalStorage(nome, numeroChamado, requisicao);
+
     // Limpa o formulário
     document.getElementById("nome").value = "";
     document.getElementById("numeroChamado").value = "";
@@ -141,3 +143,21 @@ function copiarParaAreaTransferencia(texto) {
     // Exibe uma mensagem informando que a cópia foi realizada
     alert("Mensagem copiada para a área de transferência.");
 }
+
+
+function salvarChamadoNoLocalStorage(nome, numeroChamado, requisicao) {
+    // Obtém os chamados existentes no Local Storage
+    const chamados = JSON.parse(localStorage.getItem("chamados")) || [];
+
+    // Adiciona o novo chamado à lista
+    chamados.push({
+        nome: nome,
+        numeroChamado: numeroChamado,
+        requisicao: requisicao,
+        status: "Sem Status"  // Pode adicionar outros campos se necessário
+    });
+
+    // Salva a lista atualizada no Local Storage
+    localStorage.setItem("chamados", JSON.stringify(chamados));
+}
+
