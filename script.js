@@ -49,19 +49,15 @@ function adicionarChamado() {
                                  <option value="Encerrado">Encerrado</option>
                                  <option value="Direcionado">Direcionado</option>
                              </select>`;
-                             <button onclick="excluirChamado('${numeroChamado}')">Excluir</button>`;
-                            
 
     chamadosList.appendChild(chamadoItem);
 
-    
+    salvarChamadoNoLocalStorage(nome, numeroChamado, requisicao);
 
     // Limpa o formulário
     document.getElementById("nome").value = "";
     document.getElementById("numeroChamado").value = "";
     document.getElementById("requisicao").value = "";
-
-    salvarChamadoNoLocalStorage(nome, numeroChamado, requisicao);
 }
 
 
@@ -164,19 +160,3 @@ function salvarChamadoNoLocalStorage(nome, numeroChamado, requisicao) {
     // Salva a lista atualizada no Local Storage
     localStorage.setItem("chamados", JSON.stringify(chamados));
 }
-
-function excluirChamado(numeroChamado) {
-    // Obtém os chamados existentes no Local Storage
-    const chamados = JSON.parse(localStorage.getItem("chamados")) || [];
-
-    // Filtra os chamados, removendo o chamado com o númeroChamado correspondente
-    const chamadosAtualizados = chamados.filter(chamado => chamado.numeroChamado !== numeroChamado);
-
-    // Salva a lista atualizada no Local Storage
-    localStorage.setItem("chamados", JSON.stringify(chamadosAtualizados));
-
-    // Atualiza a lista de chamados exibida na página
-    carregarChamadosDoLocalStorage();
-}
-
-
