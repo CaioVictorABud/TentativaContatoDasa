@@ -33,7 +33,19 @@
 
         <div id="chamadosContainer">
             <h2>Chamados do Dia</h2>
-            <ul id="chamadosList"></ul>
+            <ul id="chamadosList">
+                <li class="chamadoItem" id="chamado1">
+        <div class="chamadoCabecalho">Nome - Chamado 1</div>
+        <div>Descrição: Descrição do chamado 1</div>
+        <div class="status">Status: <span id="status1">Sem Status</span></div>
+        <label for="statusSelect1">Atualizar Status:</label>
+        <select id="statusSelect1" onchange="atualizarStatus('1', this.value.toLowerCase())">
+            <!-- Opções de status ... -->
+        </select>
+        <button onclick="excluirChamado('1')">Excluir</button>
+    </li>
+                
+            </ul>
         </div>
     </div>
 
