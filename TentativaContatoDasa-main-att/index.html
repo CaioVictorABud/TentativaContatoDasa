@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Controle de Chamados</title>
+</head>
+<body>
+    <div class="container">
+        <div class="container">
+            <button id="toggleTheme">Alternar Tema</button>
+            <button id="copiarBtn">Tentativa de Contato</button>
+        </div>
+        
+        <h1>Controle de Chamados</h1>
+
+
+        <form id="chamadoForm">
+            <label for="nome">Nome do Colaborador:</label>
+            <input type="text" id="nome" required>
+
+            <label for="numeroChamado">Número do Chamado:</label>
+            <input type="text" id="numeroChamado" required>
+
+            <label for="requisicao">Descrição do Chamado:</label>
+            <textarea id="requisicao" required></textarea>
+
+            <button type="button" onclick="gerarMensagem()">Gerar Mensagem</button>
+            <button type="submit">Adicionar Chamado</button>
+
+            <button onclick="excluirChamado()">Excluir Chamado</button>
+        </form>
+
+        <div id="mensagensContainer"></div>
+
+        <div id="chamadosContainer">
+            <h2>Chamados do Dia</h2>
+            <ul id="chamadosList">
+                
+                
+            </ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
