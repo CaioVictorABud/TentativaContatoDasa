@@ -93,10 +93,10 @@ document.getElementById('copiarBtn').addEventListener('click', function() {
     var dataFormatada = dataAtual.toLocaleDateString();
   
     // Monta a mensagem com o horário e a data atuais
-    var mensagem = `
-  Prezado usuário(a),
+    var mensagem = 
+ `Prezado usuário(a),
   
-  Tentativa de Contato sem sucesso, às ${horarioAtual} em ${dataFormatada}. Favor informar outra forma de contato e o melhor horário.
+  Tentativa de Contato sem sucesso, as ${horarioAtual} em ${dataFormatada}. Favor informar outra forma de contato e o melhor horário.
   Favor acessar o link https://dasadesk.dasa.com.br, para consultar o chamado, observe na parte superior do portal possui "Meus incidentes" e "Minhas solicitações" clique na opção em que se encontra seu chamado.
   Após realizar a consulta, verifique se nos comentários do chamado está faltando alguma informação para atuação da equipe ou se já tentaram o contato, caso esteja faltando informações digite uma mensagem e poste que será dado continuidade em seu chamado.
   
